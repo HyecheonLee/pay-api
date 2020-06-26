@@ -47,10 +47,9 @@
 3 조회 api
   - 발행한 토큰에 대한 정보를 받습니다.  
   [ request example ]    
-  PUT /api/v1/tokens/{token} HTTP/1.1    
-  Host: localhost  
-  X-USER-ID: 1    
-  X-ROOM-ID: room-1     
+    GET /api/v1/tokens/{token} HTTP/1.1  
+    Host: localhost  
+    X-USER-ID: 1      
   [ response example ]
   
   
