@@ -24,7 +24,7 @@ data class TokenRetrieveDto(
 
 			val publishedMoney = payTokenPublishedList
 					.map { payTokenPublish -> payTokenPublish.money }
-					.reduce { acc, money -> acc.plus(money) }
+					.fold(BigInteger.ZERO) { acc, money -> acc.plus(money) }
 
 			return TokenRetrieveDto(
 					publishedAt = payToken.createdDate!!,

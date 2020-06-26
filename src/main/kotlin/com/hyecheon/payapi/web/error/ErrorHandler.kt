@@ -1,7 +1,5 @@
 package com.hyecheon.payapi.web.error
 
-import org.springframework.boot.web.error.ErrorAttributeOptions
-import org.springframework.boot.web.error.ErrorAttributeOptions.Include
 import org.springframework.boot.web.servlet.error.ErrorAttributes
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,7 +11,7 @@ class ErrorHandler(
 		val errorAttributes: ErrorAttributes) : ErrorController {
 	@RequestMapping("/error")
 	fun handleError(webRequest: WebRequest): ApiError {
-		val attributes = errorAttributes.getErrorAttributes(webRequest, ErrorAttributeOptions.of(Include.MESSAGE))
+		val attributes = errorAttributes.getErrorAttributes(webRequest, true)
 		val message = attributes["message"] ?: ""
 		val error = attributes["error"] ?: ""
 		val url = attributes["path"] ?: ""

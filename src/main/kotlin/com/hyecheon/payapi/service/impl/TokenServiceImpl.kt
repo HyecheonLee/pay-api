@@ -81,5 +81,7 @@ class TokenServiceImpl(
 		return payTokenPublishRepository.save(payTokenPublish)
 	}
 
-
+	override fun removePublishedTokenByLocalDateTime(localDateTime: LocalDateTime) {
+		payTokenRepository.removeByCreatedDateBefore(localDateTime)
+	}
 }

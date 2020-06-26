@@ -1,7 +1,4 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb://test:test@localhost:27017/pay_api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
@@ -10,6 +7,21 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
+    open-in-view: false
     hibernate:
       format_sql: true
-      ddl-auto: create
+      ddl-auto: update
+server:
+  port: 8081
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
